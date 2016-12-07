@@ -85,7 +85,7 @@ class Icepay_IceCore_Model_Icepay_Result
 
     }
 
-    private function parseGetRequest()
+    protected function parseGetRequest()
     {
         $this->data->status = (isset($_GET['Status'])) ? $_GET['Status'] : "";
         $this->data->statusCode = (isset($_GET['StatusCode'])) ? $_GET['StatusCode'] : "";

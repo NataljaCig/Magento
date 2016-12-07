@@ -22,7 +22,7 @@ class Icepay_IceCore_Model_Icepay_Postback {
     protected $orderModel;
     protected $order;
     protected $storeID;
-    private $_post;
+    protected $_post;
 
     public function __construct()
     {
