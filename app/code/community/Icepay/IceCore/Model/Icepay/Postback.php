@@ -5,14 +5,13 @@
  *
  * @license   see LICENSE.md
  * @source    https://github.com/ICEPAYdev/Magento
- * @copyright Copyright (c) 2016 ICEPAY B.V.
+ * @copyright Copyright (c) 2017 ICEPAY B.V.
  *
  * Plugin Name: ICEPAY Payment Module
  * Plugin URI: https://icepay.com/webshop-modules/advanced-online-payment-module-magento/
  * Description: ICEPAY Payment Module for Magento
  * Author: ICEPAY
  * Author URI: https://icepay.com
- * Version: 1.2.12
  * License: http://www.gnu.org/licenses/gpl-3.0.html  GNU GENERAL PUBLIC LICENSE
  */
 
