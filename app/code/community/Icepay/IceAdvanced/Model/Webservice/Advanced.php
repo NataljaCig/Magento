@@ -3,7 +3,6 @@
 /**
  *  ICEPAY Advanced - Webservice
  * 
- *  @version 1.0.1
  *  @author Wouter van Tilburg <wouter@icepay.eu>
  *  @copyright ICEPAY <www.icepay.com>
  *  
@@ -35,16 +34,20 @@ class Icepay_IceAdvanced_Model_Webservice_Advanced extends Icepay_IceCore_Model_
 
         return $this->client->GetMyPaymentMethods(array('request' => $obj));
     }
-    
+
     /**
      * Create transaction and return result
-     * 
+     *
      * @param object $paymentObj
-     * 
+     * @param object $orderObj
+     * @param string $successUrl
+     * @param string $errorUrl
+     *
      * @since 1.0.0
      * @return array
+     *
      */
-    public function doCheckout($paymentObj, $orderObj = null)
+    public function doCheckout($paymentObj, $orderObj = null, $successUrl = '', $errorUrl = '')
     {
         $obj = new StdClass();
 
@@ -60,8 +63,8 @@ class Icepay_IceAdvanced_Model_Webservice_Advanced extends Icepay_IceCore_Model_
         $obj->OrderID = $paymentObj->getOrderID();
         $obj->PaymentMethod = $paymentObj->getPaymentMethod();
         $obj->Reference = $paymentObj->getReference();
-        $obj->URLCompleted = '';
-        $obj->URLError = '';
+        $obj->URLCompleted = $successUrl;
+        $obj->URLError = $errorUrl;
 
         if ($this->isExtendedCheckout($obj->PaymentMethod))
             $obj->XML = $orderObj->getXML();

@@ -61,6 +61,11 @@ class Icepay_IceAdvanced_Model_Pay extends Mage_Payment_Model_Method_Abstract
         // Fetch the Icepay_Order class
         $ic_order = Mage::getModel('iceadvanced/order');
 
+        //Get Success & Error URLs
+        $successUrl = Mage::getStoreConfig(Icepay_IceCore_Model_Config::OVERRIDEREDIRECTURLS, $icedata["store_id"]) ? Mage::helper("icecore")->getStoreFrontURL('result') : '';
+        $errorUrl = Mage::getStoreConfig(Icepay_IceCore_Model_Config::OVERRIDEREDIRECTURLS, $icedata["store_id"]) ? Mage::helper("icecore")->getStoreFrontURL('result') : '';
+
+
         if ($webservice->isExtendedCheckout($paymentData['ic_paymentmethod'])) {
             try {
                 // Retrieve Magento Order
@@ -169,7 +174,7 @@ class Icepay_IceAdvanced_Model_Pay extends Mage_Payment_Model_Method_Abstract
         }
 
         try {
-            return $webservice->doCheckout($paymentObject, $ic_order);
+            return $webservice->doCheckout($paymentObject, $ic_order, $successUrl, $errorUrl);
         } catch (Exception $e) {
             return $e->getMessage();
         }
